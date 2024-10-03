@@ -12,13 +12,13 @@ const Gallery = () => {
   const [showDownloadOption, setShowDownloadOption] = useState(false); // For download option
   const [pressTimer, setPressTimer] = useState(null); // Timer for press-and-hold
 
-  const access_key = "YAO9lrPHvjOKV12qPSkEyxTD1SqpMXLy_8QXLQRaSmw";
+  const access_key = "KDw_FR1Uwtb9IaKcbe_aJrmPvYY_WcHkEqBL0mbSmrQ";
 
   const fetchRandomImages = async () => {
     const loadingToast = toast.loading("Keep Calm ... Your App is Starting");
     try {
       const response = await axios.get(
-        `https://api.unsplash.com/photos/random?client_id=${access_key}&count=20`
+        `https://api.unsplash.com/photos/random?client_id=${access_key}&count=15`
       );
       setImages(response.data);
       toast.dismiss(loadingToast);
@@ -40,7 +40,7 @@ const Gallery = () => {
     const loadingToast = toast.loading("Searching for images...");
     try {
       const response = await axios.get(
-        `https://api.unsplash.com/search/photos?client_id=${access_key}&query=${query}&per_page=20`
+        `https://api.unsplash.com/search/photos?client_id=${access_key}&query=${query}&per_page=15`
       );
       setImages(response.data.results);
       toast.dismiss(loadingToast);
@@ -107,9 +107,9 @@ const Gallery = () => {
         </div>
 
         {/* Image Gallery */}
-        <h1 className=" text-nowrap sm:text-sm md:text-lg font-bold text-white text-center mb-8">
+        <h1 className=" text-nowrap  text-yellow-500 text-center mb-8">
         {/* <FaImages className="text-white text-center"/> */}
-        Get Your Images : Click to Download
+       <span className="italic">"Unleash the beauty of the world, one image at a time"</span> <br /> Tap image to Download
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {images.map((image) => (
@@ -165,6 +165,7 @@ const Gallery = () => {
           </div>
         )}
       </div>
+
     </div>
   );
 };
