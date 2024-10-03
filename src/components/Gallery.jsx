@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaSearch, FaDownload } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
-import { FaImages } from "react-icons/fa6";
+// import { FaImages } from "react-icons/fa6";
 
 const Gallery = () => {
   const [images, setImages] = useState([]);
@@ -108,7 +108,7 @@ const Gallery = () => {
 
         {/* Image Gallery */}
         <h1 className=" text-nowrap sm:text-sm md:text-lg font-bold text-white text-center mb-8">
-        <FaImages className="text-white text-center"/>
+        {/* <FaImages className="text-white text-center"/> */}
         Get Your Images : Click to Download
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
