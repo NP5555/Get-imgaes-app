@@ -97,6 +97,7 @@ const Gallery = () => {
 
     {/* Search Bar */}
     <div className="flex justify-center mb-8">
+     
       <form
         onSubmit={searchImages}
         className="flex items-center bg-white shadow-md rounded-full px-4 py-2 w-full sm:w-2/3 md:w-1/2 lg:w-1/3"
