@@ -16,7 +16,7 @@ const Gallery = () => {
   const [showDownloadOption, setShowDownloadOption] = useState(false); // For download option
   const [pressTimer, setPressTimer] = useState(null); // Timer for press-and-hold
 
-  const access_key = "KDw_FR1Uwtb9IaKcbe_aJrmPvYY_WcHkEqBL0mbSmr Q";
+  const access_key = "KDw_FR1Uwtb9IaKcbe_aJrmPvYY_WcHkEqBL0mbSmrQ";
 
   const fetchRandomImages = async () => {
     const loadingToast = toast.loading("Keep Calm ... Your App is Starting");
@@ -123,7 +123,9 @@ const Gallery = () => {
         <p className="text-white mt-4">Start by searching for images!</p>
       </div>
     ) : (
+    
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      
         {images.map((image) => (
           <div
             key={image.id}
@@ -149,34 +151,41 @@ const Gallery = () => {
     )}
 
     {/* Full-Screen Modal */}
-    {selectedImage && (
-      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
-        <div className="relative p-6 max-w-4xl w-full">
-          <img
-            src={selectedImage.urls.full}
-            alt={selectedImage.alt_description}
-            className="w-full h-auto"
-          />
-          <button
-            className="absolute top-2 right-2 text-white text-xl"
-            onClick={closeModal}
-          >
-            &times;
-          </button>
+{selectedImage && (
+  <div
+    className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50"
+    onClick={closeModal} // Close the modal when background is clicked
+  >
+    <div
+      className="relative p-6 max-w-4xl w-full"
+      onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+    >
+      <img
+        src={selectedImage.urls.full}
+        alt={selectedImage.alt_description}
+        className="w-full h-auto"
+      />
+      <button
+        className="absolute top-2 right-2 text-white text-xl"
+        onClick={closeModal}
+      >
+        &times;
+      </button>
 
-          {/* Show Download Button on press-and-hold */}
-          {showDownloadOption && (
-            <a
-              href={selectedImage.urls.full}
-              download
-              className="absolute bottom-2 right-2 text-white bg-gray-800 p-2 rounded-lg flex items-center"
-            >
-              <FaDownload className="mr-2" /> Download Image
-            </a>
-          )}
-        </div>
-      </div>
-    )}
+      {/* Show Download Button on press-and-hold */}
+      {showDownloadOption && (
+        <a
+          href={selectedImage.urls.full}
+          download
+          className="absolute bottom-2 right-2 text-white bg-gray-800 p-2 rounded-lg flex items-center"
+        >
+          <FaDownload className="mr-2" /> Download Image
+        </a>
+      )}
+    </div>
+  </div>
+)}
+
  <Footer/>
   </div>
 </div>
